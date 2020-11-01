@@ -22,7 +22,7 @@ class cc_test_client {
 		
 		log.setLevel(Level.FINEST);
 		 
-		 log.getHandlers()[0].setLevel( Level.INFO );
+		 log.getHandlers()[0].setLevel( Level.FINE );
 		 
 		if(args.length!=4) {
 			System.out.println("Usage: <host-id> <realm> <peer> <peer-port>");
@@ -31,7 +31,7 @@ class cc_test_client {
 		String host_id ="192.168.75.1";// args[0];
 		String host_name="client.swm.com";
 		String realm = "swm.com";//args[1];
-		String dest_host ="192.168.75.112"; //args[2];
+		String dest_host ="15.119.6.192"; //args[2];
 		String dest_hostname="mgr.swm.com";
 		int dest_port =3868; //Integer.parseInt(args[3]);
 		
