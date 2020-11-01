@@ -40,6 +40,7 @@ public class SendAPNS {
 	
 	public static void Send() throws UnrecoverableKeyException, KeyManagementException, CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException {
 		
+		try {
 		// hexadecimal token
 		final Base64.Decoder decoder = Base64.getDecoder();
 		byte[] decoded = decoder.decode(apns_token);
@@ -59,7 +60,10 @@ public class SendAPNS {
 		
 		NotificationResponse result = client.push(n);    // Synchronous send message
 		
-		System.out.println(result);
+		System.out.println("Result:"+result);
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
 		
 	}
 }

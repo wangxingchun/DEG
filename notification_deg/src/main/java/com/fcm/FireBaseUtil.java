@@ -170,7 +170,7 @@ public class FireBaseUtil {
 		androidNotifiBuilder.setColor("#55BEB7");// 设置消息通知颜色
 		androidNotifiBuilder.setIcon("https://www.shiku.co/images/favicon.png");// 设置消息图标
 		androidNotifiBuilder.setTitle(title);// 设置消息标题
-		androidNotifiBuilder.setBody(body);// 设置消息内容
+		androidNotifiBuilder.setBody(body);  // 设置消息内容
 		AndroidNotification androidNotification=androidNotifiBuilder.build();
 		androidConfigBuilder.setNotification(androidNotification);
 		AndroidConfig androidConfig=androidConfigBuilder.build();
