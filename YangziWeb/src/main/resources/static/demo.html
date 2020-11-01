@@ -1,0 +1,134 @@
+<html>
+<title id='mytitle'>HPE DEG Demo</title>
+<script language='javascript' type='text/javascript' src='jquery/jquery-1.12.3.min.js' ></script>
+<script language='javascript' type='text/javascript' src='jquery/jquery.easyui.min.js' ></script>
+<script language='javascript' type='text/javascript' src='js/ctrl.js' ></script>
+
+  <style type="text/css">
+        #flot-placeholder{width:1000px;height:300px;}        
+   </style>
+     
+<link href="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://www.pureexample.com/js/flot/jquery.flot.min.js"></script>
+
+<script type="text/javascript">
+        var data = [[1, 130], [2, 40], [3, 80], [4, 160], [5, 159], [6, 370], [7, 330], [8, 350]];
+ 
+        var dataset = [{label: "line1",data: data}];
+ 
+        var options = {
+            series: {
+                lines: { show: true },
+                points: {
+                    radius: 3,
+                    show: true
+                }
+            },
+            xaxis: { ticks: [[1, "1"], [3, "3"], [5, "5"], [7, "7"], [9, "9"], [11, "11"]], min: 1, max: 12 }, 
+            yaxis: { ticks: 10, min: 0 }
+        
+        };
+ 
+        $(document).ready(function () {
+            $.plot($("#flot-placeholder"), dataset, options);
+        });
+</script>
+    
+
+<style type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:15px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+	align: center;
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
+
+<body>
+<div align=center valign=middle>
+<form name="ajaxform" id="ajaxform"  action="/sendreq" method="POST">
+<table class="gridtable">
+<tr>
+	<td colspan=2>
+	
+	<label for="name">TPS: </label><input class="form-control" id=p_tps type=text maxlength="15" placeholder="1">
+	<label for="name">Running Peroid: </label><input class="form-control" id=p_duration type=text placeholder="1"> <label for="name">Minutes </label>	
+	
+	</td>
+
+</tr>
+<tr>
+	<td colspan=2>
+	<button class="btn" type="button" id='btnstart' >Start</button>
+	
+	<label for="name" id="p_starttime">YYYMMDDHHMMSS</label> <label for="name">-</label> <label for="name" id="p_endtime">YYYMMDDHHMMSS</label>
+	
+	<div id="p_percent"></div>
+	 
+	<button class="btn" type="button" id='btnend' disabled="disabled">End</button>
+				
+	</td>
+</tr>
+
+<tr>
+	<td colspan=2>
+	<label for="name">TotalTasks:</label> <input id=p_totaltasks class="form-control input-sm" type="text" placeholder="0" size=10 disabled/>
+	<label for="name">CurrentThreads:</label> <input id=p_currentthreads class="form-control input-sm" type="text" placeholder="0" size=10 disabled/>
+	<label for="name">CurrentTasks:</label> <input id=p_currenttasks class="form-control input-sm" type="text" placeholder="0" size=10 disabled/>
+	<label for="name">AverageResponse:</label> <input id=p_averageresponse class="form-control input-sm" type="text" placeholder="0" size=10 disabled/>
+	</td>
+</tr>
+
+<tr>
+	<td colspan=2>
+	<label for="name">ThreadsFailure:</label> <input id=p_failurethreads class="form-control input-sm" type="text" placeholder="0" size=10 disabled/>
+	<label for="name">ResponseFailure:</label> <input id=p_failureresponse class="form-control input-sm" type="text" placeholder="0" size=10 disabled/>			
+	</td>
+</tr>
+
+<tr>
+		<td>
+		<!-- 
+			<b>Performance Chart<br></b>
+			<textarea name="degReq" id="p_performance" rows="35" cols="150"></textarea>
+		 -->
+			<div id="flot-placeholder"></div>
+			
+		</td>
+</tr>
+
+<tr>
+	<td colspan=2>
+	
+	<label for="name">Messages:</label> 
+	
+	<textarea name="p_message" id="p_message" rows="1" cols="130" disabled></textarea>
+	
+				
+	</td>
+</tr>
+	
+</table>
+
+</form>
+
+</div>
+</body></html>

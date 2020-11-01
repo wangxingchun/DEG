@@ -1,0 +1,42 @@
+a.externallink:link 
+	{ color: #FF99FF;
+		text-decoration: none;
+	}
+
+.header{	
+	COLOR: #291E40;	
+	FONT-FAMILY: Tahoma;	
+	FONT-WEIGHT: bold;	
+	FONT-SIZE: 11pt;	
+	BACKGROUND: #C9E4F6	
+}
+
+.text0{	
+	COLOR: #291E40;	
+	FONT-FAMILY: Tahoma;	
+	FONT-SIZE: 12pt;	
+	BACKGROUND: white	
+}
+
+.text1{	
+	COLOR: #291E40;	
+	FONT-FAMILY: Tahoma;	
+	FONT-SIZE: 12pt;	
+	BACKGROUND: #	}
+	
+.textBold{	
+	COLOR: #291E40;	
+	FONT-FAMILY: Tahoma;
+	FONT-SIZE: 12pt;		
+	FONT-WEIGHT: bold;
+}
+tr.alt td {
+        background:#ecf6fc; 
+}
+ 
+tr.over td {
+        background:#bcd4ec;
+}
+
+
+input,select,textarea{font-size:12px;font-family:verdana,arial,helvetica,sans-serif;font-weight:normal}

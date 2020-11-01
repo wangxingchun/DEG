@@ -4,11 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class YangziWebApplication {
+public class YangziApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(YangziWebApplication.class, args);
-		System.out.println();
+		SpringApplication.run(YangziApplication.class, args);
 	}
 
 }
