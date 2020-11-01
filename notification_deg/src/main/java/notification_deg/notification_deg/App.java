@@ -10,6 +10,6 @@ public class App
     {
 
         System.out.println("OK this");
-        System.out.append("");
+
     }
 }
