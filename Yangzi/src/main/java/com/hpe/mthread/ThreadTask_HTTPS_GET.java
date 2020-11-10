@@ -1,5 +1,6 @@
 package com.hpe.mthread;
 
+import java.util.Date;
 import java.util.List;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -37,7 +38,8 @@ public class ThreadTask_HTTPS_GET extends Thread{
 	private String ThreadName="";
 	private InputRequest request;
     private Variable var=null;
-	
+    private static java.text.DateFormat format2 = new java.text.SimpleDateFormat("yyyyMMddhhmmss");
+    
 	public ThreadTask_HTTPS_GET(String name,InputRequest req){
 		super(name);
 		this.ThreadName=name;
@@ -125,13 +127,15 @@ public class ThreadTask_HTTPS_GET extends Thread{
 						//System.out.println("Response:" + strResponseBode);
 
 					} else {
-						System.err.println("Thread_"+this.ThreadName+ ":"+ statuscode+ " Response:"+
+						String strTimestamp=format2.format(new Date());
+						System.err.println(strTimestamp+" Thread_"+this.ThreadName+ ":"+ statuscode+ " Response:"+
 						 strResponseBode );
 						
 						ThreadPoolMain.synchronizedFailure();
 					}
 				} else {
-					 System.err.println("Thread_"+this.ThreadName+ ":"+ statuscode );
+					    String strTimestamp=format2.format(new Date());
+					    System.err.println(strTimestamp+" Thread_"+this.ThreadName+ ":"+ statuscode );
 					
 					ThreadPoolMain.synchronizedFailure();
 				}
@@ -202,12 +206,14 @@ public class ThreadTask_HTTPS_GET extends Thread{
 			String token=C3P0Util.getInstance().getAndroidToken(var.getIMSI());
 			
 			if(token.contains("MyToken")) {
-				System.err.println("No Found Token in DEGDROID_TOKENS  from IMSI:"+var.getIMSI());
+				String strTimestamp=format2.format(new Date());
+				System.err.println(strTimestamp+" No Found Token in DEGDROID_TOKENS  from IMSI:"+var.getIMSI());
 			}
 			//System.out.println("Query Token="+token);
 			long e=System.currentTimeMillis();
 			if((e-s)>500){
-				System.err.println("Query Android TOKEN over IMSI spend time:"+(e-s)+ " millisecond");
+				String strTimestamp=format2.format(new Date());
+				System.err.println(strTimestamp+" Query Android TOKEN over IMSI spend time:"+(e-s)+ " millisecond");
 				//ThreadPoolMain.log.append("Query Android TOKEN over IMSI spend time:"+(e-s)+ " millisecond"+" \n");
 			}
 			

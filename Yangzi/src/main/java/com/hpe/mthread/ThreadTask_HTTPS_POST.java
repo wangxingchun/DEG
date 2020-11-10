@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
@@ -46,6 +47,7 @@ public class ThreadTask_HTTPS_POST extends Thread{
 	private String ThreadName="";
 	private InputRequest request;
 	private Variable var=null;
+	private static java.text.DateFormat format2 = new java.text.SimpleDateFormat("yyyyMMddhhmmss");
 	
 	public ThreadTask_HTTPS_POST(String name,InputRequest req){
 		super(name);
@@ -141,12 +143,14 @@ public class ThreadTask_HTTPS_POST extends Thread{
 		    	if(strResponseBode.length()>10) {
 		    		//System.out.println("Response:"+strResponseBode);
 		    	}else {
-		    		System.err.println("Thread_"+this.ThreadName+ ":"+ statuscode+ " Response:"+ strResponseBode );
+		    		String strTimestamp=format2.format(new Date());
+		    		System.err.println(strTimestamp+" Thread_"+this.ThreadName+ ":"+ statuscode+ " Response:"+ strResponseBode );
 		    		
 		    		ThreadPoolMain.synchronizedFailure();
 		    	}
 		    }else {
-		    	System.err.println("Thread_"+this.ThreadName+ ":"+ statuscode );
+		    	String strTimestamp=format2.format(new Date());
+		    	System.err.println(strTimestamp+" Thread_"+this.ThreadName+ ":"+ statuscode );
 		    	
 		    	ThreadPoolMain.synchronizedFailure();
 		    }
@@ -229,14 +233,15 @@ public class ThreadTask_HTTPS_POST extends Thread{
 				long s=System.currentTimeMillis();
 				String token=C3P0Util.getInstance().getToken(var.getIMSI());
 				//System.out.println("Query Token="+token);
-				
+				String strTimestamp=format2.format(new Date());
 				if(token.contains("MyToken")) {
-					System.err.println("No Found Token in DEG_TOKENS  from IMSI:"+var.getIMSI());
+					
+					System.err.println(strTimestamp+" No Found Token in DEG_TOKENS  from IMSI:"+var.getIMSI());
 				}
 				
 				long e=System.currentTimeMillis();
 				if((e-s)>500){
-					System.err.println("Query TOKEN over IMSI spend time:"+(e-s)+ " millisecond");
+					System.err.println(strTimestamp+" Query TOKEN over IMSI spend time:"+(e-s)+ " millisecond");
 					
 				}
 				json=json.replaceAll("\\$\\(TOKEN\\)", token);       //replace TOKEN

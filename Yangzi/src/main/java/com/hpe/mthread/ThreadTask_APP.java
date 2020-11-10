@@ -36,6 +36,7 @@ public class ThreadTask_APP extends Thread {
 	private String ThreadName="";
 	private Map<String,String> headers = new HashMap();
 	private InputRequest req;
+	private static java.text.DateFormat format2 = new java.text.SimpleDateFormat("yyyyMMddhhmmss");
 	
 	public ThreadTask_APP(String name,InputRequest req){
 		super(name);
@@ -161,7 +162,8 @@ public class ThreadTask_APP extends Thread {
 					   // }
 						
 					} else {
-						System.err.println(this.ThreadName+":"+ responseCode +"    "+ conn.getResponseMessage());
+						String strTimestamp=format2.format(new Date());
+						System.err.println(strTimestamp+" "+this.ThreadName+":"+ responseCode +"    "+ conn.getResponseMessage());
 						//calcure the failure requests;
 						ThreadPoolMain.synchronizedFailure();
 					}
@@ -221,7 +223,9 @@ public class ThreadTask_APP extends Thread {
 			
 			long e=System.currentTimeMillis();
 			if((e-s)>500){
-				System.err.println("Query APP TOKEN over IMSI spend time:"+(e-s)+ " millisecond");
+				
+				String strTimestamp=format2.format(new Date());
+				System.err.println(strTimestamp+" Query APP TOKEN over IMSI spend time:"+(e-s)+ " millisecond");
 						
 			}
 			strRequest=strRequest.replaceAll("\\$\\(TOKEN\\)", token);       //replace TOKEN
