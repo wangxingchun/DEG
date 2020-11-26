@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import com.hpe.Control;
 import com.hpe.tool.PropertyUtil;
 
-
 @Component
 @Async
 public class Scheduler {
@@ -25,9 +24,10 @@ public class Scheduler {
 			System.out.println("#########################################################");
 			System.out.println("Time:" + format2.format(new Date()));
 			System.out.println("Request Count=" + Control.request_count);
-			
+
 			System.out.println("#########################################################");
 			// MidServerController.acquireConfiguration
+
 		}
 
 	}
